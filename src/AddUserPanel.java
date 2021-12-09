@@ -22,66 +22,70 @@ public class AddUserPanel extends JPanel {
         //setResizable(false);
 
         fnlabel = new JLabel("Firstname");
-        fnlabel.setBounds(10,32,60,27);
+        fnlabel.setBounds(10, 32, 60, 27);
         add(fnlabel);
 
         fnfield = new JTextField();
-        fnfield.setBounds(70,32,200,27);
+        fnfield.setBounds(70, 32, 200, 27);
         add(fnfield);
 
         snlabel = new JLabel("Surname");
-        snlabel.setBounds(305,32,55,27);
+        snlabel.setBounds(305, 32, 55, 27);
         add(snlabel);
 
         snfield = new JTextField();
-        snfield.setBounds(360,32,200,27);
+        snfield.setBounds(360, 32, 200, 27);
         add(snfield);
 
         pnlabel = new JLabel("Phone Number");
-        pnlabel.setBounds(585,32,90,27);
+        pnlabel.setBounds(585, 32, 90, 27);
         add(pnlabel);
 
         pnfield = new JTextField();
-        pnfield.setBounds(670,32,200,27);
+        pnfield.setBounds(670, 32, 200, 27);
         add(pnfield);
 
         //-----------------------------------------------------------------------------------
 
         unlabel = new JLabel("Username");
-        unlabel.setBounds(10,108,60,27);
+        unlabel.setBounds(10, 108, 60, 27);
         add(unlabel);
 
         unfield = new JTextField();
-        unfield.setBounds(70,108,200,27);
+        unfield.setBounds(70, 108, 200, 27);
         add(unfield);
 
         pwdlabel = new JLabel("Password");
-        pwdlabel.setBounds(305,108,60,27);
+        pwdlabel.setBounds(305, 108, 60, 27);
         add(pwdlabel);
 
         password = new JPasswordField();
-        password.setBounds(360,108,200,27);
+        password.setBounds(360, 108, 200, 27);
         add(password);
 
         cfmpwwdlabel = new JLabel("Re-Password");
-        cfmpwwdlabel.setBounds(585,108,90,27);
+        cfmpwwdlabel.setBounds(585, 108, 90, 27);
         add(cfmpwwdlabel);
 
         cfmpassword = new JPasswordField();
-        cfmpassword.setBounds(670,108,200,27);
+        cfmpassword.setBounds(670, 108, 200, 27);
         add(cfmpassword);
 
         //-------------------------------------------------------------------------------------
 
 
         createbtn = new JButton("Create User");
-        createbtn.setBounds(755,172,110,27);
+        createbtn.setBounds(755, 172, 110, 27);
         add(createbtn);
         createbtn.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
-                        fn = fnfield.getText(); sn = snfield.getText(); pn = pnfield.getText();
-                        un = unfield.getText(); pw = password.getText(); cpw = cfmpassword.getText();
+                        fn = fnfield.getText();
+                        sn = snfield.getText();
+                        pn = pnfield.getText();
+                        un = unfield.getText();
+                        pw = password.getText();
+                        cpw = cfmpassword.getText();
                         //unlength = un.length();
 
                         String myPassword = pw;
@@ -93,15 +97,12 @@ public class AddUserPanel extends JPanel {
                             if ((fn.equals("")) || (sn.equals("")) || (pn.equals("")) || (un.equals("")) || (pw.equals("")) || (cpw.equals(""))) {
 
                                 JOptionPane.showMessageDialog(null, "Please fill all fields!", "All fields Required!", JOptionPane.ERROR_MESSAGE);
-                            }
-                            else if (un.length() < 4) {
+                            } else if (un.length() < 4) {
                                 JOptionPane.showMessageDialog(null, "Please your Username should not be less than four (4) characters!", "Username too short!", JOptionPane.ERROR_MESSAGE);
-                            }
-                            else {
+                            } else {
                                 if (!pw.equals(cpw)) {   //pw.equals(cpw)  pw == cpw
                                     JOptionPane.showMessageDialog(null, "The Passwords you entered don't match!", "Passwords Mismatch!", JOptionPane.ERROR_MESSAGE);
-                                }
-                                else {
+                                } else {
                                     databaseConn = new DatabaseConnection();
                                     Boolean verifyUsername = databaseConn.verifyUsername(un);
                                     String verify = databaseConn.verify(un);
@@ -113,21 +114,22 @@ public class AddUserPanel extends JPanel {
 
                                     if (verifyUsername) {
                                         JOptionPane.showMessageDialog(null, "Please choose a different username!", "Username already taken!", JOptionPane.ERROR_MESSAGE);
-                                    }
-                                    else {
+                                    } else {
                                         databaseConn.addUser(pk, fn, sn, pn, un, mySecurePassword, mySecurePassword, slt);
                                         //DatabaseConnection.addUser(pk, fn, sn, pn, un, mySecurePassword, mySecurePassword, slt);
 
                                         //JOptionPane.showMessageDialog(null, "Secure Password: " + mySecurePassword, "User Add Success", JOptionPane.INFORMATION_MESSAGE);
                                         JOptionPane.showMessageDialog(null, "Congrats! New User Successfully Added", "User Add Success", JOptionPane.INFORMATION_MESSAGE);
-                                        fnfield.setText(""); snfield.setText(""); pnfield.setText("");
-                                        unfield.setText(""); password.setText(""); cfmpassword.setText("");
+                                        fnfield.setText("");
+                                        snfield.setText("");
+                                        pnfield.setText("");
+                                        unfield.setText("");
+                                        password.setText("");
+                                        cfmpassword.setText("");
                                     }
                                 }
                             }
-                        }
-
-                        catch(Exception exception) {
+                        } catch (Exception exception) {
                             JOptionPane.showMessageDialog(null, exception.getMessage(), "No Connection to Database", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -146,10 +148,9 @@ public class AddUserPanel extends JPanel {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         tkWidth = ((int) toolkit.getScreenSize().getWidth());
         tkHeight = ((int) toolkit.getScreenSize().getHeight());
-        dtkWidth = (tkWidth - (tkWidth*30/100));
-        dtkHeight = (tkHeight - (tkHeight*70/100));
+        dtkWidth = (tkWidth - (tkWidth * 30 / 100));
+        dtkHeight = (tkHeight - (tkHeight * 70 / 100));
     }
-
 
 
     //return image dimensions

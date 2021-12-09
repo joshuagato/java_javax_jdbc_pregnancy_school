@@ -14,7 +14,7 @@ public class DatabaseConnection {
 
     static boolean connectedToDatabase = false;
 
-    public DatabaseConnection() throws  Exception {
+    public DatabaseConnection() throws Exception {
 
         //try {
         //connect to database
@@ -36,7 +36,6 @@ public class DatabaseConnection {
     }
 
 
-
     public void addUser(int pk, String fn, String sn, String pn, String un, String pw, String cpw, String slt) throws SQLException {
 
         if (!connectedToDatabase) {
@@ -45,12 +44,11 @@ public class DatabaseConnection {
 
         try {
             //connection.createStatement().execute("INSERT INTO users VALUES('"+pk+"','"+fn+"','"+sn+"', '"+pn+"', '"+un+"', '"+pw+"', '"+cpw+"')");
-            statement.execute("INSERT INTO users VALUES('"+pk+"','"+fn+"','"+sn+"', '"+pn+"', '"+un+"', '"+pw+"', '"+cpw+"', '"+slt+"')");
-        } catch(SQLException sqlException) {
+            statement.execute("INSERT INTO users VALUES('" + pk + "','" + fn + "','" + sn + "', '" + pn + "', '" + un + "', '" + pw + "', '" + cpw + "', '" + slt + "')");
+        } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
     }
-
 
 
     public static String[] userLogin(String usernm, String passwd) throws Exception {
@@ -61,24 +59,23 @@ public class DatabaseConnection {
 
         try {
             //ResultSet res = statement.executeQuery("SELECT * FROM users WHERE username='"+usernm+"'");
-            res = statement.executeQuery("SELECT firstname, username, password, saltvalue FROM users WHERE username='"+usernm+"'");
+            res = statement.executeQuery("SELECT firstname, username, password, saltvalue FROM users WHERE username='" + usernm + "'");
             //ResultSet res = statement.executeQuery("SELECT username, password FROM users WHERE username='"+usernm+"' AND password='"+passwd+"'");
 
             while (res.next()) {
 
                 //System.out.print(res);
 
-                resultValue = new String[] {res.getString("firstname"), res.getString("username"), res.getString("password"), res.getString("saltvalue")};
+                resultValue = new String[]{res.getString("firstname"), res.getString("username"), res.getString("password"), res.getString("saltvalue")};
                 //System.out.println(res.getString("username")+" "+res.getString("password")+" "+res.getString("firstname"));
                 //System.out.println("Username: " + resultValue[0] + "Pssword: " + resultValue[1]);
             }
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
         return resultValue;
     }
-
 
 
     public boolean verifyUsername(String usernm) throws SQLException {
@@ -90,9 +87,9 @@ public class DatabaseConnection {
         }
 
         try {
-            resultSet = statement.executeQuery("SELECT * FROM users WHERE username='"+usernm+"'");
+            resultSet = statement.executeQuery("SELECT * FROM users WHERE username='" + usernm + "'");
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 resultSetValue = resultSet.getString("username");
             }
         } catch (SQLException sqlException) {
@@ -103,8 +100,7 @@ public class DatabaseConnection {
     }
 
 
-
-    public String verify(String usernm) throws SQLException{
+    public String verify(String usernm) throws SQLException {
         //Boolean result;
         String resultSetValue = null;
 
@@ -113,9 +109,9 @@ public class DatabaseConnection {
         }
 
         try {
-            resultSet = statement.executeQuery("SELECT * FROM users WHERE username='"+usernm+"'");
+            resultSet = statement.executeQuery("SELECT * FROM users WHERE username='" + usernm + "'");
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 resultSetValue = resultSet.getString("username");
             }
         } catch (SQLException sqlException) {

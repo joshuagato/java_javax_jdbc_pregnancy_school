@@ -31,8 +31,8 @@ public class SchoolFrame extends JFrame {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         tkWidth = ((int) toolkit.getScreenSize().getWidth());
         tkHeight = ((int) toolkit.getScreenSize().getHeight());
-        dtkWidth = (tkWidth - (tkWidth*30/100));
-        dtkHeight = (tkHeight - (tkHeight*70/100));
+        dtkWidth = (tkWidth - (tkWidth * 30 / 100));
+        dtkHeight = (tkHeight - (tkHeight * 70 / 100));
 
         //Setting up the main menu bar
         JMenuBar bar = new JMenuBar();
@@ -50,47 +50,42 @@ public class SchoolFrame extends JFrame {
 
         //set up listener for add-user menu item
         adduser.addActionListener(
-            new ActionListener() {  //anonymous inner class
+                new ActionListener() {  //anonymous inner class
 
-                //create internal frame
-                JInternalFrame adduserFrame = new JInternalFrame("Add User", false, true, false, true);
+                    //create internal frame
+                    JInternalFrame adduserFrame = new JInternalFrame("Add User", false, true, false, true);
 
-                //display new internal window
-                public void actionPerformed(ActionEvent event) {
+                    //display new internal window
+                    public void actionPerformed(ActionEvent event) {
 
 
-                    if (!adduserFrame.isVisible()) {
-                        AddUserPanel adduserPanel = new AddUserPanel();  //create a new panel
-                        //adduserFrame.add(panel2, BorderLayout.CENTER);  //add panel
-                        adduserFrame.add(adduserPanel);  //add panel
-                        adduserFrame.pack(); //set internal frame to size of contents
-                        //adduserFrame.setLocationRelativeTo(null);
+                        if (!adduserFrame.isVisible()) {
+                            AddUserPanel adduserPanel = new AddUserPanel();  //create a new panel
+                            //adduserFrame.add(panel2, BorderLayout.CENTER);  //add panel
+                            adduserFrame.add(adduserPanel);  //add panel
+                            adduserFrame.pack(); //set internal frame to size of contents
+                            //adduserFrame.setLocationRelativeTo(null);
 
-                        theDesktop.add(adduserFrame);  //attach internal frame
-                        adduserFrame.setVisible(true);  //show internal frame
+                            theDesktop.add(adduserFrame);  //attach internal frame
+                            adduserFrame.setVisible(true);  //show internal frame
 
-                        Dimension desktopSize = theDesktop.getSize();
-                        Dimension jInternalFrameSize = adduserFrame.getSize();
+                            Dimension desktopSize = theDesktop.getSize();
+                            Dimension jInternalFrameSize = adduserFrame.getSize();
 
-                        adduserFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2, (desktopSize.height- jInternalFrameSize.height)/2);
+                            adduserFrame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, (desktopSize.height - jInternalFrameSize.height) / 2);
 
-                        adduserFrame.getRootPane().setDefaultButton(adduserPanel.createbtn);
+                            adduserFrame.getRootPane().setDefaultButton(adduserPanel.createbtn);
 
-                        //adduserFrame.getContentPane().Singleton.getInstance();
-                        //sclass =  new SingletonClass();
-                        //adduserFrame.getContentPane().sclass.getInstance();
-                        //adduserFrame.getContentPane().sclass.getInstance();
-                    }
+                            //adduserFrame.getContentPane().Singleton.getInstance();
+                            //sclass =  new SingletonClass();
+                            //adduserFrame.getContentPane().sclass.getInstance();
+                            //adduserFrame.getContentPane().sclass.getInstance();
+                        }
 
-                    //JOptionPane.showMessageDialog(null, "How are you?", "Welcome Message", JOptionPane.WARNING_MESSAGE);
-                }//end method action performed
-            }//end anonymous inner class
+                        //JOptionPane.showMessageDialog(null, "How are you?", "Welcome Message", JOptionPane.WARNING_MESSAGE);
+                    }//end method action performed
+                }//end anonymous inner class
         );
-
-
-
-
-
 
 
         JMenuItem updateuserinfo = new JMenuItem("Update User Information");
@@ -104,11 +99,11 @@ public class SchoolFrame extends JFrame {
 
         //set up listener for newFrame menu item
         updateuserinfo.addActionListener(
-            new ActionListener() {  //anonymous inner class
+                new ActionListener() {  //anonymous inner class
 
-                //display new internal window
-                public void actionPerformed(ActionEvent event){
-                    //create internal frame
+                    //display new internal window
+                    public void actionPerformed(ActionEvent event) {
+                        //create internal frame
                 /*JInternalFrame frame = new JInternalFrame("Internal Frame", true, true, true, true);
 
                 MyJPanel panel = new MyJPanel();  //create a new panel
@@ -119,17 +114,14 @@ public class SchoolFrame extends JFrame {
                 frame.setVisible(true);  //show internal frame*/
 
 
-
-                    //JOptionPane.showMessageDialog(null, "How are you?", "Welcome Message", JOptionPane.WARNING_MESSAGE);
-                }//end method action performed
-            }//end anonymous inner class
+                        //JOptionPane.showMessageDialog(null, "How are you?", "Welcome Message", JOptionPane.WARNING_MESSAGE);
+                    }//end method action performed
+                }//end anonymous inner class
         ); //end call to addActionListener
 
         JMenuItem changepassword = new JMenuItem("Change Password");
         changepassword.setMnemonic('C');
         usersettings.add(changepassword);
-
-
 
 
         JMenuItem resetpassword = new JMenuItem("Reset Password");

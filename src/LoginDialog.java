@@ -59,7 +59,8 @@ public class LoginDialog extends JDialog {
         loginbtn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                un = usernametxf.getText(); pwd = passwordpwf.getText();
+                un = usernametxf.getText();
+                pwd = passwordpwf.getText();
 
                 if ((un.equals("")) || (pwd.equals(""))) {
                     JOptionPane.showMessageDialog(null, "Please fill all fields!", "All fields Required!", JOptionPane.ERROR_MESSAGE);

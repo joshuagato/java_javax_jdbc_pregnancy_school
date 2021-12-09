@@ -13,13 +13,13 @@ public class SchoolTest {
     public static void main(String[] args) {
 
         try {
-            for (UIManager.LookAndFeelInfo info: UIManager.getInstalledLookAndFeels()){
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch(Exception exception){
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 //        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -36,7 +36,7 @@ public class SchoolTest {
             //@Override
 
             public void windowClosing(WindowEvent windowEvent) {
-                int dialogButton = JOptionPane.showConfirmDialog(null, "Are you sure?","WARNING",JOptionPane.YES_NO_OPTION);
+                int dialogButton = JOptionPane.showConfirmDialog(null, "Are you sure?", "WARNING", JOptionPane.YES_NO_OPTION);
 
                 if (dialogButton == JOptionPane.YES_OPTION) {
                     System.exit(0);
@@ -56,11 +56,10 @@ public class SchoolTest {
         //schoolFrame.setEnabled(false);
 
 
-
         LoginDialog loginDlg = new LoginDialog(schoolFrame);
         loginDlg.setVisible(true);
         //loginDlg.setDefaultCloseOperation(System.exit(0));
-        loginDlg.setSize(300,100);
+        loginDlg.setSize(300, 100);
         loginDlg.setLayout(new FlowLayout());
     }
 }
